@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.entity.Car;
 import racingcar.repository.Repository;
+import racingcar.strategy.MovementStrategy;
 import racingcar.validate.Validators;
 
 import java.util.*;
@@ -11,11 +12,14 @@ public class RaceServiceImpl implements RaceService {
 
     private final Repository<Car> repository;
     private final Validators validators;
+    private final MovementStrategy movementStrategy;
 
-    public RaceServiceImpl(Repository<Car> repository,
-                           Validators validators) {
+    public RaceServiceImpl(Repository<Car> repository
+                            , Validators validators
+                            , MovementStrategy movementStrategy) {
         this.repository = repository;
         this.validators = validators;
+        this.movementStrategy = movementStrategy;
     }
 
     @Override
@@ -24,7 +28,7 @@ public class RaceServiceImpl implements RaceService {
         String[] names = carsName.split(",");
 
         for(String name:names){
-            repository.save(new Car(name.trim()));
+            repository.save(new Car(name.trim(),movementStrategy));
         }
     }
 

@@ -6,6 +6,8 @@ import racingcar.repository.CarRepository;
 import racingcar.repository.Repository;
 import racingcar.service.RaceService;
 import racingcar.service.RaceServiceImpl;
+import racingcar.strategy.MovementStrategy;
+import racingcar.strategy.RandomMovementStrategy;
 import racingcar.validate.Validators;
 import racingcar.validate.ValidatorsImpl;
 import racingcar.controller.view.RaceView;
@@ -27,8 +29,12 @@ public class AppConfig {
         );
     }
 
+    public MovementStrategy movementStrategy() {
+        return new RandomMovementStrategy();
+    }
+
     public RaceService service(){
-        return new RaceServiceImpl(repsitory(),racingValidators());
+        return new RaceServiceImpl(repsitory(),racingValidators(),movementStrategy());
     }
 
     public RaceView raceView(){
