@@ -1,15 +1,17 @@
 package racingcar.entity;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.strategy.MovementStrategy;
 
 public class Car {
 
     private String name;
     private int position;
+    private final MovementStrategy movementStrategy;
 
-    public Car(String carName) {
+    public Car(String carName, MovementStrategy movementStrategy) {
         this.name = carName;
         this.position = 0;
+        this.movementStrategy = movementStrategy;
     }
 
     private Car(String carName, int position) {
@@ -21,7 +23,7 @@ public class Car {
     }
 
     public void move() {
-        if( Randoms.pickNumberInRange(0, 9)>=4){
+        if (movementStrategy.canMove()) {
             position++;
         }
     }
