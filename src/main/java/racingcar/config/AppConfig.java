@@ -19,15 +19,16 @@ public class AppConfig {
         return new CarRepository();
     }
 
-    public RaceService service(){
-        return new RaceServiceImpl(repsitory());
-    }
     public Validators racingValidators() {
         return new ValidatorsImpl(
                 ONLY_ONE_CAR_PATTERN,  // GameRules.ONLY_ONE_CAR_PATTERN
                 RACING_CARS_PATTERN,   // GameRules.RACING_CARS_PATTERN
                 MAX_RACE_REPETITION    // GameRules.MAX_RACE_REPETITION
         );
+    }
+
+    public RaceService service(){
+        return new RaceServiceImpl(repsitory(),racingValidators());
     }
 
     public RaceView raceView(){

@@ -15,6 +15,11 @@ public interface RaceService {
     void createCars(String carsName);
 
     /**
+     * 중복된 차이름이 있는지 검증합니다.
+     */
+    void duplicateNameCheck();
+
+    /**
      * 한번씩 차들 움직이게 한 후
      * @return 모든 차를 리스트로 반환
      */
