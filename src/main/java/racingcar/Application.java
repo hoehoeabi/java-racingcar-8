@@ -6,10 +6,8 @@ import racingcar.controller.RaceController;
 public class Application {
     public static void main(String[] args) {
 
-        AppConfig appConfig = new AppConfig();
-
         try{
-            appConfig
+            new AppConfig()
                     .raceController()
                     .raceStart();
         } catch (Exception e){
