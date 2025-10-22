@@ -15,7 +15,7 @@ public class RaceController {
     private final RaceService raceService;
 
     public RaceController(RaceView view
-            ,Validators validators
+            , Validators validators
             ,RaceService raceService) {
         this.view = view;
         this.validators = validators;
@@ -24,8 +24,8 @@ public class RaceController {
 
     public void raceStart() {
         String input = view.carsNameInputView();
-        validators.inputValidate(input);
         raceService.createCars(input);
+        raceService.duplicateNameCheck();
 
         String raceReps = view.raceRepetitionInputView();
         validators.repsValidate(raceReps);
