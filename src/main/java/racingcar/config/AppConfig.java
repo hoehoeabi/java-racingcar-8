@@ -1,0 +1,45 @@
+package racingcar.config;
+
+import racingcar.controller.RaceController;
+import racingcar.entity.Car;
+import racingcar.repository.CarRepository;
+import racingcar.repository.Repository;
+import racingcar.service.RaceService;
+import racingcar.service.RaceServiceImpl;
+import racingcar.validate.Validators;
+import racingcar.validate.ValidatorsImpl;
+import racingcar.controller.view.RaceView;
+import racingcar.controller.view.RaceViewImpl;
+
+import static racingcar.pattern.GameRules.*;
+
+public class AppConfig {
+
+    public Repository<Car> repsitory(){
+        return new CarRepository();
+    }
+
+    public RaceService service(){
+        return new RaceServiceImpl(repsitory());
+    }
+    public Validators racingValidators() {
+        return new ValidatorsImpl(
+                ONLY_ONE_CAR_PATTERN,  // GameRules.ONLY_ONE_CAR_PATTERN
+                RACING_CARS_PATTERN,   // GameRules.RACING_CARS_PATTERN
+                MAX_RACE_REPETITION    // GameRules.MAX_RACE_REPETITION
+        );
+    }
+
+    public RaceView raceView(){
+
+        return new RaceViewImpl();
+    }
+
+    public RaceController raceController(){
+
+        return new RaceController(raceView()
+                ,racingValidators()
+                ,service());
+    }
+
+}
