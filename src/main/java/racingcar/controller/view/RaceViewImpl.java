@@ -29,15 +29,17 @@ public class RaceViewImpl implements RaceView {
     @Override
     public void raceFlowResultView(List<Car> cars) {
         for (Car car : cars) {
-            System.out.print(car.getName()+" : ");
-
-            for (int i = 0; i < car.getPosition(); i++) {
-                System.out.print("-");
-            }
-
-            System.out.println();
+            drawCarMovement(car);
         }
 
+        System.out.println();
+    }
+
+    private static void drawCarMovement(Car car) {
+        System.out.print(car.getName()+" : ");
+        for (int i = 0; i < car.getPosition(); i++) {
+            System.out.print("-");
+        }
         System.out.println();
     }
 

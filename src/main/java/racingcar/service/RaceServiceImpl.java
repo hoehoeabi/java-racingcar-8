@@ -59,18 +59,27 @@ public class RaceServiceImpl implements RaceService {
         int longestPosition = Integer.MIN_VALUE;
 
         for(Car car:cars){
-            if(car.getPosition()>longestPosition){
-                longestPosition =car.getPosition();
-                winners.clear();
-                winners.add(car.getName());
-                continue;
-            }
-            if(car.getPosition()==longestPosition){
-                winners.add(car.getName());
-            }
+            longestPosition = getLongestPosition(car
+                    , longestPosition
+                    , winners);
         }
 
         return new LinkedList<>(winners);
+    }
+
+    private static int getLongestPosition(Car car
+            , int longestPosition
+            , List<String> winners) {
+        if(car.getPosition()> longestPosition){
+            longestPosition = car.getPosition();
+            winners.clear();
+            winners.add(car.getName());
+            return longestPosition;
+        }
+        if(car.getPosition()== longestPosition){
+            winners.add(car.getName());
+        }
+        return longestPosition;
     }
 
 }
