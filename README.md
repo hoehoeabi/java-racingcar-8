@@ -9,23 +9,23 @@
 -----------------
 ## 패키지 구조
 ```
-src<br>
-│<br>
-├─ main<br>
+src   
+│   
+├─ main 
 │   └─ java
 │     └─ racingcar
 │        ├─ config
 │        │   └─ Appconfig # 앱의 의존성 주입 작업을 시행합니다
 │        ├─ controller
 │        │   ├─ RaceController  # 뷰와 서비스, Validators등을 사용하는 컨트롤러입니다    
-│        │   └─ View
-│        │     ├─ RaceViewImpl # 뷰를 담당합니다
-│        │     └─ RaceView 
+│        │   └─-- View
+│        │        ├─ RaceViewImpl # 뷰를 담당합니다
+│        │        └─ RaceView 
 │        ├─ entity   
 │        │   ├─ Car # 자동차 객체입니다.이름과 이동 전략을 의존성 주입 받으며 위치의 경우 0으로 초기화 시켜줍니다.
-│        │   └─ strategy
-│        │      ├─ MovementStrategy
-│        │      └─ RandomMovementStrategy # 요구사항과 같은 이동전략입니다. 테스트때 단위테스트의 용이함을 위해 전략패턴을 적용하였습니다.
+│        │   └─-- strategy
+│        │       ├─ MovementStrategy
+│        │       └─ RandomMovementStrategy # 요구사항과 같은 이동전략입니다. 테스트때 단위테스트의 용이함을 위해 전략패턴을 적용하였습니다.
 │        ├─ repository
 │        │   ├─ CarRepository
 │        │   └─ Repository # Car 객체들을 저장하고 관리해주는 레포지토리입니다.
@@ -35,8 +35,8 @@ src<br>
 │        ├─ validate
 │        │   ├─ Validators
 │        │   ├─ ValidatorsImpl # 사용자 입력값을 검증하는 역할을 합니다.
-│        │   └─ pattern
-│        │        └─ GameRules # Validators에서 사용할 Pattern객체들을 가지고 있는 유틸 클래스입니다.
+│        │   └─-- pattern
+│        │         └─ GameRules # Validators에서 사용할 Pattern객체들을 가지고 있는 유틸 클래스입니다.
 │        └─ Application # 앱의 시작점입니다.
 │
 └─  test
