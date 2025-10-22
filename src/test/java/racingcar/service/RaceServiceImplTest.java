@@ -78,8 +78,8 @@ class RaceServiceImplTest {
         assertThat(fakeRepository.getAll()).isEmpty();
     }
 
-    // 이건 validator단위테스트로 대체
     @Test
+    @DisplayName("중복 이름 체크는 통합테스트로 대체")
     void duplicateNameCheck() {
     }
 
