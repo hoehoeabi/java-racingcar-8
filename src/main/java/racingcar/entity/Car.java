@@ -1,6 +1,6 @@
 package racingcar.entity;
 
-import racingcar.strategy.MovementStrategy;
+import racingcar.entity.strategy.MovementStrategy;
 
 public class Car {
 

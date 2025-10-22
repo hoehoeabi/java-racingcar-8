@@ -2,7 +2,7 @@ package racingcar.service;
 
 import racingcar.entity.Car;
 import racingcar.repository.Repository;
-import racingcar.strategy.MovementStrategy;
+import racingcar.entity.strategy.MovementStrategy;
 import racingcar.validate.Validators;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package racingcar.pattern;
+package racingcar.validate.pattern;
 
 import java.util.regex.Pattern;
 

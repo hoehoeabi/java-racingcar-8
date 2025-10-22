@@ -6,14 +6,14 @@ import racingcar.repository.CarRepository;
 import racingcar.repository.Repository;
 import racingcar.service.RaceService;
 import racingcar.service.RaceServiceImpl;
-import racingcar.strategy.MovementStrategy;
-import racingcar.strategy.RandomMovementStrategy;
+import racingcar.entity.strategy.MovementStrategy;
+import racingcar.entity.strategy.RandomMovementStrategy;
 import racingcar.validate.Validators;
 import racingcar.validate.ValidatorsImpl;
 import racingcar.controller.view.RaceView;
 import racingcar.controller.view.RaceViewImpl;
 
-import static racingcar.pattern.GameRules.*;
+import static racingcar.validate.pattern.GameRules.*;
 
 public class AppConfig {
 
