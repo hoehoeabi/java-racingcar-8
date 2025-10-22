@@ -11,7 +11,6 @@ public class CarRepository implements Repository<Car> {
 
     @Override
     public void save(Car entity) {
-
         cars.add(entity);
     }
 
@@ -19,4 +18,5 @@ public class CarRepository implements Repository<Car> {
     public List<Car> getAll() {
         return Collections.unmodifiableList(cars);
     }
+
 }

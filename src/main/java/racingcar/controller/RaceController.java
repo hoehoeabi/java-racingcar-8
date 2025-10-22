@@ -40,4 +40,5 @@ public class RaceController {
         Queue<String> winners = raceService.getWinners();
         view.showWinnerOutputView(winners);
     }
+
 }

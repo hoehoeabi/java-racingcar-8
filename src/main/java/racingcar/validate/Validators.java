@@ -23,4 +23,5 @@ public interface Validators {
      * 3. 시도회수는 음수이면 안됨
      */
     void repsValidate(String raceReps);
+
 }

@@ -21,26 +21,29 @@ public class ValidatorsImpl implements Validators {
     public void inputValidate(String carNames) {
         Matcher onlyOneInputMatcher = onlyOneInputPattern.matcher(carNames);
         Matcher inputPatternMatcher = inputPattern.matcher(carNames);
+
         if(onlyOneInputMatcher.matches()){
             throw new IllegalArgumentException("자동차 한개로는 경기를 시작하지 못합니다!");
         }
+
         if(!inputPatternMatcher.matches()){
             throw new IllegalArgumentException("제대로 된 입력값을 주세요!" +
                     "\n자동차이름은 최대 5자이며" +
-                    "\n자동차는 최대 5대까지 입력 가능합니다!");
+                    "\n자동차는 알파벳 대소문자로 최대 5대까지 입력 가능합니다!");
         }
+
     }
 
     @Override
     public void repsValidate(String raceReps) {
         int reps;
+        int maxReps = MAX_RACE_REPETITION;
+
         try {
             reps = Integer.parseInt(raceReps);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자만 입력 가능합니다!");
         }
-
-        int maxReps = MAX_RACE_REPETITION;
 
         if (reps > maxReps) {
             throw new IllegalArgumentException("시도 횟수는 최대 " + maxReps + "회까지입니다!");
@@ -49,5 +52,7 @@ public class ValidatorsImpl implements Validators {
         if (reps <= 0) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
+
     }
+
 }

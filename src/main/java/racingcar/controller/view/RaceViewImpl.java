@@ -30,11 +30,14 @@ public class RaceViewImpl implements RaceView {
     public void raceFlowResultView(List<Car> cars) {
         for (Car car : cars) {
             System.out.print(car.getName()+" : ");
+
             for (int i = 0; i < car.getPosition(); i++) {
                 System.out.print("-");
             }
+
             System.out.println();
         }
+
         System.out.println();
     }
 
@@ -50,6 +53,5 @@ public class RaceViewImpl implements RaceView {
 //        System.out.println("최종 우승자 : " + winnerList);
 
     }
-
 
 }

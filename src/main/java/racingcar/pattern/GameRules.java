@@ -16,4 +16,5 @@ public class GameRules {
     private GameRules() {
         throw new IllegalStateException("Rules class");
     }
+
 }

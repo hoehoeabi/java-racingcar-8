@@ -19,6 +19,7 @@ public class RaceServiceImpl implements RaceService {
     @Override
     public void createCars(String carsName) {
         String[] names = carsName.split(",");
+
         for(String name:names){
             repository.save(new Car(name.trim()));
         }
@@ -40,6 +41,7 @@ public class RaceServiceImpl implements RaceService {
         List<Car> cars = repository.getAll();
         List<String> winners = new ArrayList<>();
         int longestPosition = Integer.MIN_VALUE;
+
         for(Car car:cars){
             if(car.getPosition()>longestPosition){
                 longestPosition =car.getPosition();
@@ -51,6 +53,8 @@ public class RaceServiceImpl implements RaceService {
                 winners.add(car.getName());
             }
         }
+
         return new LinkedList<>(winners);
     }
+
 }

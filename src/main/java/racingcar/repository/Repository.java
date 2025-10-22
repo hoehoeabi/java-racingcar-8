@@ -16,5 +16,4 @@ public interface Repository<T> {
      */
     List<T> getAll();
 
-
 }

@@ -25,4 +25,5 @@ public interface RaceService {
      * @return 우승자(들) 이름 받아오기
      */
     Queue<String> getWinners();
+
 }
