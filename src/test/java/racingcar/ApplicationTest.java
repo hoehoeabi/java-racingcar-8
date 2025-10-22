@@ -24,10 +24,101 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
+    void 예외_테스트_5글자초과() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,javaji", "1");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_자동차한대() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi", "1");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_차이름_한글입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("자동차", "1");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_쉼표가아닌구분자() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi?echo", "1");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_쉼표로_끝남() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,", "1");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_5대초괴() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("a,b,c,d,e,f", "1");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_이름중복() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("a,b,a", "1");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_경기횟수_문자입력() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("a,b", "ㅈ");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
+        );
+    }
+
+    @Test
+    void 예외_테스트_경기횟수_6회초과() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("a,b", "6");
+                    assertThat(output()).contains("[ERROR]");
+                },
+                MOVING_FORWARD, STOP
         );
     }
 
