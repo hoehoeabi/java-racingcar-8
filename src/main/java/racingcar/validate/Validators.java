@@ -11,8 +11,17 @@ public interface Validators {
      * 2. 차이름이 하나일경우 검증
      *                 -> (차이름,){min,1}차이름{1}로도 할까 했는데
      *                 예외를 세세히 나누고자 1번처럼 정규식을 짰습니다.
+     *
      */
     void inputValidate(String carNames);
+
+    /**
+     *
+     * @param carsListCount 차 객체 리스트 사이즈
+     * @param carsSetCount 이름 집합 사이즈
+     * 차이름은 중복 X
+     */
+    void nameDuplicateValidate(int carsListCount, int carsSetCount);
 
     /**
      *

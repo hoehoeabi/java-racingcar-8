@@ -35,6 +35,14 @@ public class ValidatorsImpl implements Validators {
     }
 
     @Override
+    public void nameDuplicateValidate(int carsListCount, int carsSetCount) {
+        if(carsListCount != carsSetCount){
+            throw new IllegalArgumentException("이름은 중복될 수 없습니다!");
+        }
+
+    }
+
+    @Override
     public void repsValidate(String raceReps) {
         int reps;
         int maxReps = MAX_RACE_REPETITION;
