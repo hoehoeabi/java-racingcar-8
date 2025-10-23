@@ -22,4 +22,8 @@ class FakeCarRepository implements Repository<Car> {
         return Collections.unmodifiableList(cars);
     }
 
+    public void clear() {
+        cars.clear();
+    }
+
 }
