@@ -1,8 +1,12 @@
 package racingcar.validate;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -48,7 +52,7 @@ class ValidatorsImplTest {
 
     // 에러로그 보면 어떤 케이스가 실패했는지 확인 가능해서 한곳에서 테스트 했습니다.
     @Test
-    @DisplayName("입력값이 정규식에 맞지 않게 들어옴")
+    @DisplayName("입력값이 정규식에 맞지 않게 들어옴. 변수 생성 방식")
     void inputValidate_입력값_정규식검증_실패() {
         // given
         String exceptionMessage = "제대로 된 입력값을 주세요!" +
@@ -74,8 +78,40 @@ class ValidatorsImplTest {
         assertThat(exception3.getMessage()).isEqualTo(exceptionMessage);
     }
 
+    @ParameterizedTest
+    @DisplayName("입력값이 정규식에 맞지 않게 들어옴. CsvSource 방식")
+    @CsvSource(value = {"'pobi,'","'pobi,asd!'","ㅁ"})
+    void inputValidate_입력값_정규식검증_실패_CsvSource사용(String input) {
+        // given
+        String exceptionMessage = "제대로 된 입력값을 주세요!" +
+                "\n자동차이름은 최대 5자이며" +
+                "\n자동차는 알파벳 대소문자로 최대 5대까지 입력 가능합니다!";
+
+        // when & then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            validators.inputValidate(input);
+        });
+        assertThat(exception.getMessage()).isEqualTo(exceptionMessage);
+    }
+
+    @ParameterizedTest
+    @DisplayName("입력값이 정규식에 맞지 않게 들어옴. ValueSource방식")
+    @ValueSource(strings = {"pobi,","pobi,asd!","ㅁ"})
+    void inputValidate_입력값_정규식검증_실패_ValueSource사용(String input) {
+        // given
+        String exceptionMessage = "제대로 된 입력값을 주세요!" +
+                "\n자동차이름은 최대 5자이며" +
+                "\n자동차는 알파벳 대소문자로 최대 5대까지 입력 가능합니다!";
+
+        // when & then
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            validators.inputValidate(input);
+        });
+        assertThat(exception.getMessage()).isEqualTo(exceptionMessage);
+    }
+
     @Test
-    @DisplayName("중복 이름 체크는 통합테스트로 대체")
+    @Disabled("중복 이름 체크는 통합테스트로 대체")
     void nameDuplicateValidate_성공() {
     }
 
