@@ -1,10 +1,9 @@
 package racingcar.service;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.entity.Car;
-import racingcar.repository.Repository;
 import racingcar.validate.Validators;
 
 import java.util.Queue;
@@ -18,26 +17,32 @@ class RaceServiceImplTest {
     private RaceServiceImpl raceService;
 
     // 테스트를 위한 가짜들
-    private Repository<Car> fakeRepository;
+    private static FakeCarRepository fakeRepository;
     private Validators fakeValidators;
     private FakeMovementStrategy fakeMovementStrategy;
 
+    @BeforeAll
+    static void init() {
+        fakeRepository = new FakeCarRepository();
+    }
     @BeforeEach
     void setUp() {
-        this.fakeRepository = new FakeCarRepository();
         this.fakeValidators = new FakeValidators();
         this.fakeMovementStrategy = new FakeMovementStrategy(true);
 
         this.raceService = new RaceServiceImpl(fakeRepository
                 ,fakeValidators
                 ,fakeMovementStrategy);
+
+        fakeRepository.clear();
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("자동차 이름을 쉼표로 구분하여 생성한다")
-    void createCars_성공() {
+    @ValueSource(strings = {"pobi , crong "} )
+    void createCars_성공(String carNames) {
         // given
-        String carNames = "pobi , crong ";
+        //String carNames = "pobi , crong ";
 
         // when
         raceService.createCars(carNames);
@@ -79,7 +84,7 @@ class RaceServiceImplTest {
     }
 
     @Test
-    @DisplayName("중복 이름 체크는 통합테스트로 대체")
+    @Disabled("중복 이름 체크는 통합테스트로 대체")
     void duplicateNameCheck() {
     }
 
