@@ -22,7 +22,7 @@ public class RaceController {
         this.raceService = raceService;
     }
 
-    public void raceStart() {
+    public void raceStart() throws IllegalArgumentException {
         String input = view.carsNameInputView();
         raceService.createCars(input);
         raceService.duplicateNameCheck();
