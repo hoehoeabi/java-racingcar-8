@@ -78,6 +78,8 @@ class ValidatorsImplTest {
         assertThat(exception3.getMessage()).isEqualTo(exceptionMessage);
     }
 
+    // 공부를 해보니 CsvSource는 두 값을 비교하는데에 적합한 인수테스트라고 생각됩니다.
+    // 공부 기록용으로 남겨두겠습니다.
     @ParameterizedTest
     @DisplayName("입력값이 정규식에 맞지 않게 들어옴. CsvSource 방식")
     @CsvSource(value = {"'pobi,'","'pobi,asd!'","ㅁ"})
