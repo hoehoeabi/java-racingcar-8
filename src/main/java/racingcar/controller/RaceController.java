@@ -25,7 +25,6 @@ public class RaceController {
     public void raceStart() throws IllegalArgumentException {
         String input = view.carsNameInputView();
         raceService.createCars(input);
-        raceService.duplicateNameCheck();
 
         String raceReps = view.raceRepetitionInputView();
         validators.repsValidate(raceReps);
