@@ -6,7 +6,6 @@ import racingcar.entity.strategy.MovementStrategy;
 import racingcar.validate.Validators;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RaceServiceImpl implements RaceService {
 
@@ -23,23 +22,20 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
-    public void createCars(String carsName) {
-        validators.inputValidate(carsName);
-        String[] names = carsName.split(",");
+    public void createCars(String input) {
+        validators.inputValidate(input);
 
-        for(String name:names){
-            repository.save(new Car(name.trim(),movementStrategy));
-        }
+        List<String> carNames = Arrays.stream(input.split(","))
+                .map(String::trim)
+                .toList();
+
+        validators.nameDuplicateValidate(carNames);
+
+        carNames.stream()
+                .map(name -> new Car(name, movementStrategy))
+                .forEach(repository::save);
     }
 
-    @Override
-    public void duplicateNameCheck() {
-        List<Car> carsList = repository.getAll();
-        Set<String> carNamesSet = carsList.stream()
-                .map(Car::getName)
-                .collect(Collectors.toSet());
-        validators.nameDuplicateValidate(carsList.size(),carNamesSet.size());
-    }
 
     @Override
     public List<Car> doOneRace() {

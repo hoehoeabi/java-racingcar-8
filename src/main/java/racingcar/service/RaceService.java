@@ -10,14 +10,13 @@ public interface RaceService {
     /**
      *
      * @param carsName 차 이름들이 적힌 문자열
+     * 입력값을 검증 후
+     * 중복된 차이름이 있는지 검증합니다.
+     * 이상이 없다면
      * 자동차 객체를 만들어줍니다.
      */
     void createCars(String carsName);
 
-    /**
-     * 중복된 차이름이 있는지 검증합니다.
-     */
-    void duplicateNameCheck();
 
     /**
      * 한번씩 차들 움직이게 한 후
