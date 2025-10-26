@@ -1,6 +1,8 @@
 package racingcar.validate;
 
 
+import java.util.List;
+
 public interface Validators {
 
     /**
@@ -17,11 +19,10 @@ public interface Validators {
 
     /**
      *
-     * @param carsListCount 차 객체 리스트 사이즈
-     * @param carsSetCount 이름 집합 사이즈
+     * @param carNames 차이름 리스트
      * 차이름은 중복 X
      */
-    void nameDuplicateValidate(int carsListCount, int carsSetCount);
+    void nameDuplicateValidate(List<String> carNames);
 
     /**
      *

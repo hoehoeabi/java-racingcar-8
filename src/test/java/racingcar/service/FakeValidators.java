@@ -2,6 +2,8 @@ package racingcar.service;
 
 import racingcar.validate.Validators;
 
+import java.util.List;
+
 // Validators 인터페이스를 구현하는 "테스트용" 클래스
 class FakeValidators implements Validators {
 
@@ -11,7 +13,7 @@ class FakeValidators implements Validators {
     }
 
     @Override
-    public void nameDuplicateValidate(int listSize, int setSize) {
+    public void nameDuplicateValidate(List<String> carNames) {
 
     }
 

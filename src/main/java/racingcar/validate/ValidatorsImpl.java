@@ -1,5 +1,8 @@
 package racingcar.validate;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,9 +38,11 @@ public class ValidatorsImpl implements Validators {
     }
 
     @Override
-    public void nameDuplicateValidate(int carsListCount, int carsSetCount) {
-        if(carsListCount != carsSetCount){
-            throw new IllegalArgumentException("이름은 중복될 수 없습니다!");
+    public void nameDuplicateValidate(List<String> carNames) {
+        Set<String> uniqueNames = new HashSet<>(carNames);
+
+        if (carNames.size() != uniqueNames.size()) {
+            throw new IllegalArgumentException("자동차 이름에 중복이 있습니다.!");
         }
 
     }
