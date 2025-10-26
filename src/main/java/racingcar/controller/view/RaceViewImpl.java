@@ -22,7 +22,6 @@ public class RaceViewImpl implements RaceView {
 
     @Override
     public void outcomeTopView() {
-        Console.close();
         System.out.println("\n실행 결과");
     }
 
