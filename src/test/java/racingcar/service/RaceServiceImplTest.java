@@ -130,17 +130,29 @@ class RaceServiceImplTest {
         // given
         Car car1 = new Car("pobi",fakeMovementStrategy);
         Car car2 = new Car("babi",fakeMovementStrategy);
+        Car car3 = new Car("nabi",fakeMovementStrategy);
+        Car car4 = new Car("gabi",fakeMovementStrategy);
+
         fakeRepository.save(car1);
         fakeRepository.save(car2);
+        fakeRepository.save(car3);
+        fakeRepository.save(car4);
+
         car1.move();
         car2.move();
+        car3.move();
+
+        car1.move();
+        car2.move();
+        car3.move();
+        car4.move();
 
         // when
         Queue<String> winners = raceService.getWinners();
 
         // then
         int winnersSize = winners.size();
-        assertThat(winnersSize).isEqualTo(2);
+        assertThat(winnersSize).isEqualTo(3);
     }
 
     @Test
