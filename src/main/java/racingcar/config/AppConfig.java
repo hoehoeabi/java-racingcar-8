@@ -1,6 +1,7 @@
 package racingcar.config;
 
 import racingcar.controller.RaceController;
+import racingcar.controller.view.RaceView;
 import racingcar.entity.Car;
 import racingcar.repository.CarRepository;
 import racingcar.repository.Repository;
@@ -10,7 +11,6 @@ import racingcar.entity.strategy.MovementStrategy;
 import racingcar.entity.strategy.RandomMovementStrategy;
 import racingcar.validate.Validators;
 import racingcar.validate.ValidatorsImpl;
-import racingcar.controller.view.RaceView;
 import racingcar.controller.view.RaceViewImpl;
 
 import static racingcar.validate.pattern.GameRules.*;

@@ -1,9 +1,9 @@
 package racingcar.controller;
 
+import racingcar.controller.view.RaceView;
 import racingcar.entity.Car;
 import racingcar.service.RaceService;
 import racingcar.validate.Validators;
-import racingcar.controller.view.RaceView;
 
 import java.util.List;
 import java.util.Queue;
@@ -16,7 +16,7 @@ public class RaceController {
 
     public RaceController(RaceView view
             , Validators validators
-            ,RaceService raceService) {
+            , RaceService raceService) {
         this.view = view;
         this.validators = validators;
         this.raceService = raceService;
